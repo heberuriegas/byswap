@@ -44,6 +44,7 @@ gem 'localized_country_select', '~> 0.9.2' # Select countries
 gem 'tire' # Elasticsearch
 gem 'geocoder' # Geocoder
 gem 'time_diff' # Time difference
+gem 'faker', '~> 1.2.0'
 
 # Validations
 gem 'validates_email_format_of', '~> 1.5.3'
@@ -64,7 +65,6 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'debugger'
-  gem 'faker', '~> 1.2.0'
   gem 'listen', '~> 1.3.1' # Temporary patch should be "gem 'listen', '~> 2.1.1'"
   gem 'guard-rspec', '~> 3.1.0' # Temporary patch should be "gem 'guard-rspec', '~> 4.0.3'"
   gem 'rspec-rails', '~> 2.14.0'
