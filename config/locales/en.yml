@@ -27,6 +27,7 @@ en:
     shared:
       publish: "Publish your currency"
       welcome: "Welcome"
+      days: "Days"
     layouts:
       header:
         login: "Facebook Login"

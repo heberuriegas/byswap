@@ -42,6 +42,7 @@ gem 'carrierwave', '~> 0.9.0' # Photo uploads
 gem 'localized_country_select', '~> 0.9.2' # Select countries
 gem 'tire' # Elasticsearch
 gem 'geocoder' # Geocoder
+gem 'time_diff' # Time difference
 
 # Validations
 gem 'validates_email_format_of', '~> 1.5.3'

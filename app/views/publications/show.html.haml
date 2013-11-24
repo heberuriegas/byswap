@@ -7,8 +7,8 @@
   %b Currency:
   = @publication.currency
 %p
-  %b Expires at:
-  = @publication.expires_at
+  %b Expires in:
+  = @publication.expires_at == -1 ? 'Expired' : "#{@publication.expires_at} #{t('views.shared.days')}"
 
 = link_to 'Edit', edit_publication_path(@publication)
 \|

@@ -4,7 +4,7 @@
   %tr
     %th Amount
     %th Currency
-    %th Expires at
+    %th Expires in
     %th
     %th
     %th
@@ -13,7 +13,7 @@
     %tr
       %td= publication.amount
       %td= publication.currency
-      %td= publication.expires_at
+      %td= publication.expires_at == -1 ? 'Expired' : "#{publication.expires_at} #{t('views.shared.days')}"
       %td= link_to 'Show', publication
       %td= link_to 'Edit', edit_publication_path(publication)
       %td= link_to 'Destroy', publication, :method => :delete, :data => { :confirm => 'Are you sure?' }

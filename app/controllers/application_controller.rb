@@ -30,12 +30,13 @@ class ApplicationController < ActionController::Base
 
     def target_currency
       if params[:target_currency].present? && SUPPORTED_CURRENCIES.include?(params[:target_currency]) && params[:target_currency] != current_currency
-        params[:target_currency]
+        session[:target_currency] = params[:target_currency]
       elsif current_currency == 'USD'
-        COUNTRY_CURRENCIES[country_code]
+        session[:target_currency] = COUNTRY_CURRENCIES[country_code]
       else
-        COUNTRY_CURRENCIES['US']
+        session[:target_currency] = COUNTRY_CURRENCIES['US']
       end 
+      session[:target_currency]
     end
 
     def resource
