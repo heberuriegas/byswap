@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   after_validation :reverse_geocode
 
   reverse_geocoded_by :latitude, :longitude do |user,results|
-    user.update_attribute :country_code, geo.country_code if geo = results.first
+    geo = results.try(:first)
+    user.update_attribute :country_code, geo.country_code if geo.present?
   end
 
   def self.create_with_omniauth(auth)
