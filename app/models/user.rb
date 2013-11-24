@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   rolify
-  attr_accessible :provider, :uid, :name, :email, :oauth_token, :oauth_token_expires, :oauth_token_expires_at
-  validates_presence_of :name
+  attr_accessible :provider, :uid, :name, :email, :oauth_token, :oauth_token_expires, :oauth_token_expires_at, :address, :latitude, :longitude
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
 
   def self.create_with_omniauth(auth)
     create! do |user|
