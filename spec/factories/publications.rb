@@ -2,8 +2,9 @@
 
 FactoryGirl.define do
   factory :publication do
-    amount ""
-    currency "MyString"
-    expires_at "2013-11-24 04:06:40"
+    amount { generate :random_number }
+    amount_currency { generate :random_currency }
+    expires_at { generate :random_number }
+    association :user
   end
 end

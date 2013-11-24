@@ -1,5 +1,7 @@
 class Publication < ActiveRecord::Base
-  attr_accessible :amount, :currency, :expires_at
+  attr_accessible :amount, :amount_currency, :expires_at, :user_id
+
+  belongs_to :user
 
   monetize :amount_cents, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 999999 }
 
@@ -17,5 +19,9 @@ class Publication < ActiveRecord::Base
     else
       0
     end
+  end
+
+  def expires_in
+    self.expires_at == -1 ? 'Expired' : "#{self.expires_at} #{I18n.t('views.shared.days')}"
   end
 end

@@ -2,8 +2,12 @@
 
 FactoryGirl.define do
   factory :user do
-    provider "twitter"
-    uid "12345"
-    name "Bob"
+    provider "facebook"
+    uid { generate :random_number }
+    name { generate :full_name }
+    email { generate :email }
+    address { generate :address }
+    latitude { generate :latitude }
+    longitude { generate :longitude }
   end
 end

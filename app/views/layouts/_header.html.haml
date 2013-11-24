@@ -13,10 +13,13 @@
       #currencies.pull-left= currencies_today
       = link_to t('views.shared.publish'), new_publication_path, class: 'btn btn-primary pull-left nav-button'
       - if user_signed_in?
-        = link_to edit_user_path(current_user.id), class: 'pull-left img-profile' do
+        = link_to edit_user_path(current_user.id), class: 'pull-left img-profile  dropdown-toggles', 'data-toggle' => 'dropdown' do
           = image_tag current_user.extra_small_image, alt: current_user.name, class: 'img-thumbnail'
-        = link_to "#{t('views.shared.welcome')} #{current_user.name}", edit_user_path(current_user.id), class: 'btn pull-left nav-button'
-        = link_to t('views.layouts.header.logout'), destroy_user_session_path, method: :delete, class: 'btn logout pull-left nav-button'
+          ▼
+        %ul.dropdown-menu
+          %li= link_to t('views.layouts.header.publications'), publications_path(user_id: current_user.id)
+          %li= link_to t('views.layouts.header.edit_profile'), edit_user_path(current_user.id)
+          %li= link_to t('views.layouts.header.logout'), destroy_user_session_path, method: :delete
       - else
         = link_to new_user_session_path, class: 'btn btn-facebook pull-left nav-button' do
           = fa_icon "facebook-square"

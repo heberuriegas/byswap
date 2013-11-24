@@ -1,3 +1,91 @@
-// Place all the styles related to the Publications controller here.
-// They will automatically be included in application.css.
-// You can use Less here: http://lesscss.org/
+@import "custom_bootstrap/variables.less";
+@import "custom_bootstrap/mixins.less";
+
+#publications {
+  padding-top: 80px;
+
+  #publications-header {
+    min-height: 200px;
+    height: auto;
+    background-color: @blue;
+    margin-bottom: 20px;
+    color: @gray-light;
+    padding: 20px;
+  }
+
+  #freewall {
+    width: 100%;
+
+    .cell {
+      width: 250px;
+      height: 200px;
+      text-align: center;
+      position: relative;
+
+      img {
+        width: 250px;
+      }
+
+      .contact {
+        width: 100px;
+        height: 35px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+        display: none;
+      }
+
+      .image-holder {
+          display:inline-block;
+          position: relative;
+      }
+      .image-holder:after {
+          content:'';
+          top: 0;
+          left: 0;
+          z-index: 10;
+          width: 100%;
+          height: 100%;
+          display: block;
+          position: absolute;
+          background: white;
+          opacity: 0.1;
+      }
+      .image-holder:hover:after {
+          opacity: 0.7;
+          background: black;
+          cursor: pointer;
+      }
+
+      .description {
+        width: 250px;
+        min-height: 50px;
+        height: auto;
+        background-color: white;
+        border-left: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        border-bottom: 1px solid #cccccc;
+        margin-left: auto;
+        margin-right: auto;
+
+        .friends, .transactions {
+          font-size: 12px;
+          text-align: left;
+          margin: 2px;
+          color: @blue;
+        }
+
+        .amount {
+          color: @gray-dark;
+          font-size: 15px;
+          font-weight: bold;
+          margin-top: 12px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+}

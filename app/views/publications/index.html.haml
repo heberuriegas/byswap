@@ -1,23 +1,72 @@
-%h1 Listing publications
+- content_for 'container-fluid' do 
+  true
+#publications
+  .row
+    #publications-header.col-md-12
+      .row
+        .col-md-4.col-md-offset-2.inform
+          %h1= t('views.publications.inform')
+          %h2= "#{current_currency} #{fa_icon('exchange')} #{target_currency}".html_safe
+          %h2= t('views.publications.address', address: current_user.address) if current_user.present?
+        .col-md-4.friends
+          %h3= t('views.publications.friends')
+          =t('views.publications.friends_remember')
+          %br
+          - if current_user.present?
+            - (1...8).each do |n|
+              = image_tag "https://graph.facebook.com/#{@friend_list.sample[:id]}/picture"
+          %br
+          %br
+          = link_to t('views.publications.add_more_friends'), '#', class: 'btn btn-primary'
+  .row
+    .col-md-10.col-md-offset-1
+      #freewall
+        - @publications.sort_by{ |t| t.user.friends_in_common*-1 }.each do |publication|
+          .cell
+            = link_to user_path publication.user do
+              .image-holder
+                = image_tag publication.user.medium_image, alt: publication.amount
+            = link_to t('views.publications.contact'), '#', class: 'btn btn-primary contact'
+            .description
+              .row
+                .col-md-6
+                  .row
+                    .col-md-12.friends
+                      %span.badge
+                        = publication.user.friends_in_common
+                      = t('views.publications.friends_in_common')
+                  .row
+                    .col-md-12.transactions
+                      %span.badge
+                        = publication.user.transactions
+                      = t('views.publications.transactions_completed')
+                .col-md-6
+                  .amount= "$#{publication.amount} #{publication.amount_currency}"
+      = paginate @publications
+- content_for :extra_js do
+  = javascript_include_tag 'freewall.js'
+  :javascript
+    $(function(){
+      var wall = new freewall('#freewall');
+      wall.reset({
+        selector: '.cell',
+        animate: true,
+        cellW: 250,
+        cellH: 200,
+        onResize: function() {
+          wall.fitWidth();
+        }
+      });
+      wall.fitWidth();
 
-%table
-  %tr
-    %th Amount
-    %th Currency
-    %th Expires in
-    %th
-    %th
-    %th
+      // for scroll bar appear;
+      $(window).trigger("resize");
 
-  - @publications.each do |publication|
-    %tr
-      %td= publication.amount
-      %td= publication.currency
-      %td= publication.expires_at == -1 ? 'Expired' : "#{publication.expires_at} #{t('views.shared.days')}"
-      %td= link_to 'Show', publication
-      %td= link_to 'Edit', edit_publication_path(publication)
-      %td= link_to 'Destroy', publication, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      $('.image-holder').mouseover(function(){
+        $(this).closest('.cell').find('.contact').addClass('show');
+      });
 
-%br
-
-= link_to 'New Publication', new_publication_path
+      $('.image-holder').mouseleave(function(){
+        $(this).closest('.cell').find('.contact').removeClass('show');
+      });
+    })

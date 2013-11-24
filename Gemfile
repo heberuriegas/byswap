@@ -3,6 +3,7 @@ ruby '2.0.0'
 
 # Core
 gem 'rails', '4.0.0'
+gem 'rake'
 gem 'protected_attributes'
 gem 'pg'
 # gem 'turbolinks'

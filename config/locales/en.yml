@@ -32,12 +32,21 @@ en:
       header:
         login: "Facebook Login"
         logout: "Logout"
+        publications: "Publications"
       footer:
         home: "Home"
         about: "About Us"
         terms: "Terms & Conditions"
         contact: "Contact Us"
         chat: "Chat With Us"
+    publications:
+      inform: "Exchange between"
+      address: "In %{address}"
+      friends: "Your friend references of facebook."
+      friends_remember: "(This help for ranking people that a friend of you may know)"
+      transactions_completed: "Transactions"
+      friends_in_common: "Friends"
+      contact: "Contact User"
     static:
       home:
         presentation: "Exchange dollars directly with other people for the currency that you need for the actual value."

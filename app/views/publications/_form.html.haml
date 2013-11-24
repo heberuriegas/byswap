@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :amount
-    = f.input :currency, collection: SUPPORTED_CURRENCIES.map{ |key,value| [key, key] }, selected: current_currency
+    = f.input :amount_currency, collection: SUPPORTED_CURRENCIES.map{ |key,value| [key, key] }, selected: current_currency
     = f.input :expires_at, collection: (1...31).map{|n| ["#{n} #{t('views.shared.days')}", n] }, selected: @publication.expires_at
 
   .form-actions

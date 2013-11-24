@@ -5,3 +5,15 @@
   Email: #{@user.email if @user.email}
 %p
   Address: #{@user.address if @user.address}
+%p
+  .transactions
+    %span.badge #{rand(20)}
+    Transactions completed
+%p
+  .friends
+    %span.badge #{rand(20)}
+    Friends in common
+%p
+  = link_to 'Ask in Facebook', "http://facebook.com/#{@user.uid}", target: '_blank', class: 'btn btn-primary'
+%p
+  = image_tag @user.medium_image, alt: @user.name

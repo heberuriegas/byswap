@@ -2,9 +2,11 @@ class User < ActiveRecord::Base
   rolify
   attr_accessible :provider, :uid, :name, :email, :oauth_token, :oauth_token_expires, :oauth_token_expires_at, :address, :latitude, :longitude, :country_code
   validates :name, presence: true
-  validates :address, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
+  #validates :address, presence: true
+  #validates :latitude, presence: true
+  #validates :longitude, presence: true
+
+  has_many :publications
 
   after_validation :reverse_geocode
 
@@ -33,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def medium_image
-    "http://graph.facebook.com/#{self.uid}/picture?width=200&height=200"
+    "http://graph.facebook.com/#{self.uid}/picture?width=250&height=150"
   end
 
   def large_image
@@ -46,6 +48,14 @@ class User < ActiveRecord::Base
 
   def mutual_friends uid
     graph.get_connections("me", "mutualfriends/#{uid}")
+  end
+
+  def transactions
+    @transaction ||= rand(20)
+  end
+
+  def friends_in_common
+    @friends_in_common ||= rand(20)
   end
 
   private

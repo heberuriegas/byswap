@@ -1,9 +1,15 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index]
 
   # GET /publications
   def index
-    @publications = Publication.all
+    @publications = Publication.order(created_at: :desc)
+    @publications = @publications.where(user_id: current_user.id) if params[:user_id].present?
+    @publications = @publications.where(amount_currency: params[:currency]) if params[:currency].present?
+    @publications = @publications.page params[:page]
+
+    @friend_list = current_user.friend_list if current_user.present?
   end
 
   # GET /publications/1
@@ -51,8 +57,14 @@ class PublicationsController < ApplicationController
       @publication = Publication.find(params[:id])
     end
 
+    def default_params
+      default_params = {}
+      default_params[:user_id] = current_user.id if current_user.present?
+      default_params
+    end
+
     # Only allow a trusted parameter "white list" through.
     def publication_params
-      params.require(:publication).permit(:amount, :currency, :expires_at)
+      params.require(:publication).permit(:amount, :amount_currency, :expires_at).merge!(default_params)
     end
 end
