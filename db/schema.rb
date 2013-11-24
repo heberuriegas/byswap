@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124021638) do
+ActiveRecord::Schema.define(version: 20131124054722) do
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20131124021638) do
     t.string   "address"
     t.float    "latitude",                         default: 0.0
     t.float    "longitude",                        default: 0.0
+    t.string   "country_code"
   end
 
   create_table "users_roles", id: false, force: true do |t|

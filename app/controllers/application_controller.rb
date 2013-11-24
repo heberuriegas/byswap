@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   helper_method :resource
   helper_method :user_signed_in?
   helper_method :correct_user?
+  helper_method :current_country
+  helper_method :current_currency
+  helper_method :target_currency
+
+  DEFAULT_COUNTRY = 'CL'
 
   private
     def current_user
@@ -12,6 +17,25 @@ class ApplicationController < ActionController::Base
       rescue Exception => e
         nil
       end
+    end
+
+    def current_country
+      @currency_country ||= request.env['HTTP_CF_IPCOUNTRY'] || 'US'
+    end
+
+    def current_currency
+      country_code = current_user.try(:country_code) || request.try(:location).try(:country_code) || DEFAULT_COUNTRY
+      COUNTRY_CURRENCIES[country_code]
+    end
+
+    def target_currency
+      if params[:target_currency].present?
+        params[:target_currency]
+      elsif current_currency == 'USD'
+        COUNTRY_CURRENCIES[country_code]
+      else
+        COUNTRY_CURRENCIES['US']
+      end 
     end
 
     def resource

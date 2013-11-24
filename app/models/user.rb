@@ -1,10 +1,16 @@
 class User < ActiveRecord::Base
   rolify
-  attr_accessible :provider, :uid, :name, :email, :oauth_token, :oauth_token_expires, :oauth_token_expires_at, :address, :latitude, :longitude
+  attr_accessible :provider, :uid, :name, :email, :oauth_token, :oauth_token_expires, :oauth_token_expires_at, :address, :latitude, :longitude, :country_code
   validates :name, presence: true
   validates :address, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
+
+  after_validation :reverse_geocode
+
+  reverse_geocoded_by :latitude, :longitude do |user,results|
+    user.update_attribute :country_code, geo.country_code if geo = results.first
+  end
 
   def self.create_with_omniauth(auth)
     create! do |user|
