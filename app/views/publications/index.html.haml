@@ -1,0 +1,23 @@
+%h1 Listing publications
+
+%table
+  %tr
+    %th Amount
+    %th Currency
+    %th Expires at
+    %th
+    %th
+    %th
+
+  - @publications.each do |publication|
+    %tr
+      %td= publication.amount
+      %td= publication.currency
+      %td= publication.expires_at
+      %td= link_to 'Show', publication
+      %td= link_to 'Edit', edit_publication_path(publication)
+      %td= link_to 'Destroy', publication, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Publication', new_publication_path

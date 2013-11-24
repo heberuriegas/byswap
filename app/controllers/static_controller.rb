@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
   def home
-    @users = User.all
+    @publication = Publication.new
   end
 end

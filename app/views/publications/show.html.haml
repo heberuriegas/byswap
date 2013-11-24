@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Amount:
+  = @publication.amount
+%p
+  %b Currency:
+  = @publication.currency
+%p
+  %b Expires at:
+  = @publication.expires_at
+
+= link_to 'Edit', edit_publication_path(@publication)
+\|
+= link_to 'Back', publications_path

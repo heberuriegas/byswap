@@ -1,4 +1,6 @@
 Byswap::Application.routes.draw do
+  resources :publications
+
   root :to => "static#home"
   resources :users, :only => [:index, :show, :edit, :update ]
   get '/auth/:provider/callback' => 'sessions#create'

@@ -11,7 +11,7 @@
         = image_tag 'logo_white_small.png', alt: 'Byswap'
     .collapse.navbar-collapse.navbar-ex1-collapse.pull-right
       #currencies.pull-left= currencies_today
-      = link_to t('views.shared.publish'), '#', class: 'btn btn-primary pull-left nav-button'
+      = link_to t('views.shared.publish'), new_publication_path, class: 'btn btn-primary pull-left nav-button'
       - if user_signed_in?
         = link_to edit_user_path(current_user.id), class: 'pull-left img-profile' do
           = image_tag current_user.extra_small_image, alt: current_user.name, class: 'img-thumbnail'

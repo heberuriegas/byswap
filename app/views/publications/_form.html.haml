@@ -1,0 +1,10 @@
+= simple_form_for(@publication) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :amount
+    = f.input :currency
+    = f.input :expires_at, as: :date
+
+  .form-actions
+    = f.button :submit

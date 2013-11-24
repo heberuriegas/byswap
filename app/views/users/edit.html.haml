@@ -1,25 +1,7 @@
-= simple_form_for resource, url: user_path(current_user.id), method: :patch do |f|
-  = f.input :name
-  = f.input :email
-  = f.input :address
-  = f.input :latitude, as: :hidden, required: true, input_html: { data: { geo: 'lat' } }
-  = f.input :longitude,  as: :hidden, required: true, input_html: { data: { geo: 'lng' } }
-  = image_tag resource.medium_image, alt: 'Image'
-  %br
-  %br
-  = f.button :submit, class: 'btn btn-success'
-- content_for :extra_js do
-  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"
-  = javascript_include_tag "jquery.geocomplete"
-  :javascript
-    $('#user_address').geocomplete({details: "form", detailsAttribute: "data-geo"});
+%h1 Editing user
 
-    
-    geo = new window.Geo("#resource.latitude", "#{resource.longitude}")
-    geo.get_reverse_geocoding('#user_address');
-
-    $('#user_address').keydown(function(){
-      $('#user_latitude').attr('value', '');
-      $('#user_longitude').attr('value', '');
-    });
-  
+= render 'form'
+%br
+= link_to 'Show', current_user
+\|
+= link_to 'Back', root_path
