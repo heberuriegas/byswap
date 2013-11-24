@@ -25,7 +25,7 @@
           .cell
             = link_to user_path publication.user do
               .image-holder
-                = image_tag publication.user.medium_image, alt: publication.amount
+                = image_tag publication.user.medium_image, alt: publication.amount, width: '250px', height: '150px'
             = link_to t('views.publications.contact'), '#', class: 'btn btn-primary contact'
             .description
               .row
