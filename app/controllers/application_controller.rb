@@ -24,12 +24,12 @@ class ApplicationController < ActionController::Base
     end
 
     def current_currency
-      country_code = current_user.try(:country_code) || request.try(:location).try(:country_code) || DEFAULT_COUNTRY
-      COUNTRY_CURRENCIES[country_code]
+      country_code = current_user.try(:country_code) || request.try(:location).try(:country_code)
+      COUNTRY_CURRENCIES[country_code] || COUNTRY_CURRENCIES[DEFAULT_COUNTRY]
     end
 
     def target_currency
-      if params[:target_currency].present?
+      if params[:target_currency].present? && SUPPORTED_CURRENCIES.include?(params[:target_currency]) && params[:target_currency] != current_currency
         params[:target_currency]
       elsif current_currency == 'USD'
         COUNTRY_CURRENCIES[country_code]
