@@ -20,9 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  project:
+    description: "Exchange dollars directly with other people for the currency that you need for the actual value."
+    keywords: "exchange money, exchange currencies, exchange money directly, exchange currencies directly, exchange currencies without fees, currencies without fees, money without fees, money no fee, currency no fee"
   views:
     shared:
       publish: "Publish your currency"
+      welcome: "Welcome"
     layouts:
       header:
         login: "Facebook Login"
@@ -35,7 +39,7 @@ en:
         chat: "Chat With Us"
     static:
       home:
-        presentation: "Exchange dollars directly with others people for the currency you need for the actual value."
+        presentation: "Exchange dollars directly with other people for the currency that you need for the actual value."
         i_need_usd: "I need USD"
         i_need_other: "I need %{currency}"
         why_byswap: "Why Byswap?"

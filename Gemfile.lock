@@ -112,6 +112,7 @@ GEM
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
+    geocoder (1.1.8)
     google_currency (3.0.0)
       money (~> 5.1.1)
     guard (1.8.3)
@@ -336,6 +337,7 @@ DEPENDENCIES
   faker (~> 1.2.0)
   figaro
   font-awesome-rails
+  geocoder
   google_currency (~> 3.0.0)
   guard-rspec (~> 3.1.0)
   guard-spork (~> 1.5.1)

@@ -12,6 +12,9 @@
     .collapse.navbar-collapse.navbar-ex1-collapse.pull-right
       = link_to t('views.shared.publish'), '#', class: 'btn btn-primary pull-left nav-button'
       - if user_signed_in?
+        = link_to edit_user_path(current_user.id), class: 'pull-left img-profile' do
+          = image_tag current_user.extra_small_image, alt: current_user.name, class: 'img-thumbnail'
+        = link_to "#{t('views.shared.welcome')} #{current_user.name}", edit_user_path(current_user.id), class: 'btn pull-left nav-button'
         = link_to t('views.layouts.header.logout'), destroy_user_session_path, method: :delete, class: 'btn logout pull-left nav-button'
       - else
         = link_to new_user_session_path, class: 'btn btn-facebook pull-left nav-button' do

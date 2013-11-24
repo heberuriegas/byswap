@@ -1,5 +1,17 @@
-= form_for(@user) do |f|
-  = f.label :email
-  = f.text_field :email
+= simple_form_for resource, url: user_path(current_user.id), method: :patch do |f|
+  = f.input :name
+  = f.input :email
+  = f.input :address
+  = f.input :latitude, as: :hidden, input_html: { data: { geo: 'lat' } }
+  = f.input :longitude, as: :hidden, input_html: { data: { geo: 'lng' } }
+  = image_tag resource.medium_image, alt: 'Image'
   %br/
-  = f.submit "Sign in"
+  = f.submit
+- content_for :extra_js do
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"
+  = javascript_include_tag "jquery.geocomplete"
+  :javascript
+    $('#user_address').geocomplete({details: "form", detailsAttribute: "data-geo"});
+
+    geo = new window.Geo("#resource.latitude", "#{resource.longitude}")
+    geo.get_reverse_geocoding('#user_address');

@@ -63,22 +63,33 @@ html, body {
   .btn-pseudo-states(#3B5998, white)
 }
 
-.nav-button {
-  margin-top: 22px;
-  margin-left: 10px;
-}
-
 #header {
   border-bottom: 1px solid @green;
   background: rgba(20,20,20,.8) !important;
 
+  a, a:hover {
+    color: @gray-light;
+  }
+
+  .nav-button {
+    margin-top: 22px;
+    margin-right: 15px;
+  }
+
+  .img-profile {
+    margin-top: 17px;
+  }
+
   .logout {
-    color: white;
+    color: @gray;
   }
 }
 
-.container-body {
-
+.container-no-fluid {
+  margin-top: 80px;
+  padding-top: 30px;
+  min-height: 500px;
+  height: auto;
 }
 
 #footer {

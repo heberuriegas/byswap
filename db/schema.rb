@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123151529) do
+ActiveRecord::Schema.define(version: 20131124021638) do
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 20131123151529) do
     t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "oauth_token"
+    t.integer  "oauth_token_expires_at", limit: 8
+    t.boolean  "oauth_token_expires"
+    t.string   "address"
+    t.float    "latitude",                         default: 0.0
+    t.float    "longitude",                        default: 0.0
   end
 
   create_table "users_roles", id: false, force: true do |t|

@@ -7,8 +7,13 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
-    user = User.where(:provider => auth['provider'], 
-                      :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
+    user = User.where(provider: auth['provider'], uid: auth['uid'].to_s).first
+    first_step = false
+    unless user.present?
+      user = User.create_with_omniauth(auth)
+      first_step = true
+    end
+    user.update_attributes oauth_token: auth[:credentials][:token], oauth_token_expires: auth[:credentials][:expires], oauth_token_expires_at: auth[:credentials][:expires_at]
     # Reset the session after successful login, per
     # 2.8 Session Fixation – Countermeasures:
     # http://guides.rubyonrails.org/security.html#session-fixation-countermeasures

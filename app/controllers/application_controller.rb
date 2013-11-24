@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
+  helper_method :resource
   helper_method :user_signed_in?
   helper_method :correct_user?
 
@@ -11,6 +12,10 @@ class ApplicationController < ActionController::Base
       rescue Exception => e
         nil
       end
+    end
+
+    def resource
+      current_user
     end
 
     def user_signed_in?
