@@ -5,7 +5,6 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'protected_attributes'
 gem 'pg'
-gem 'thin'
 # gem 'turbolinks'
 # gem 'jbuilder', '~> 1.2'
 
@@ -67,6 +66,7 @@ group :development, :test do
   gem 'guard-rspec', '~> 3.1.0' # Temporary patch should be "gem 'guard-rspec', '~> 4.0.3'"
   gem 'rspec-rails', '~> 2.14.0'
   gem 'guard-spork', '~> 1.5.1'
+  gem 'thin'
 end
 
 group :test do
@@ -79,3 +79,9 @@ group :development, :production do
   gem 'newrelic_rpm'
   gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 end
+
+group :production do
+  gem 'unicorn'
+  gem 'rails_12factor'
+end
+
