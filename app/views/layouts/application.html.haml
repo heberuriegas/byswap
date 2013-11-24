@@ -1,15 +1,28 @@
 !!!
-%html
+/[if IE 8] <html class="no-js lt-ie9" lang="es">
+/[if IE 9] <html class="no-js lt-ie10" lang="es">
+<!--[if gt IE 9]><!-->
+%html{:class => 'no-js', :lang => 'es'}
+  <!--<![endif]-->
   %head
-    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Byswap'
-    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Byswap'}"}
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    = csrf_meta_tags
+    = render 'layouts/meta_tags'
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
+    = favicon_link_tag 'apple-touch-icon-144x144.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '144x144'
+    = favicon_link_tag 'apple-touch-icon-114x114.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '114x114'
+    = favicon_link_tag 'apple-touch-icon-72x72.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '72x72'
+    = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png'
+    = favicon_link_tag 'favicon.png', rel: 'shortcut icon'
   %body
-    %header
-      = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
+    = render 'layouts/header'
+    - @container = content_for?('container-fluid') ? 'container-fluid' : 'container'
+    %div.container-body{class: @container}
+      = bootstrap_flash unless params[:controller] == 'static' && params[:action] == 'home'
       = yield
+    = render 'layouts/footer'
+    = javascript_include_tag "application"
+    = yield :extra_js
+    /[if lt IE 9]
+      = javascript_include_tag 'html5shiv', 'respond'
+    - if Rails.env.production?
+      :javascript
+        

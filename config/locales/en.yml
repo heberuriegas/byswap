@@ -20,4 +20,47 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  views:
+    shared:
+      publish: "Publish your currency"
+    layouts:
+      header:
+        login: "Facebook Login"
+        logout: "Logout"
+      footer:
+        home: "Home"
+        about: "About Us"
+        terms: "Terms & Conditions"
+        contact: "Contact Us"
+        chat: "Chat With Us"
+    static:
+      home:
+        presentation: "Exchange dollars directly with others people for the currency you need for the actual value."
+        i_need_usd: "I need USD"
+        i_need_other: "I need %{currency}"
+        why_byswap: "Why Byswap?"
+        find_secure: "Find Secure"
+        find_secure_description: "Add your facebook friends as references and find trustly people."
+        negociate: "Negociate"
+        negociate_description: "Exchange with the actual currency without intermediaries or exchange houses."
+        save_money: "Save Money"
+        save_money_description: "By avoiding the cost of buying and selling, both sides win."
+        pricing:
+          title: 'Upgrade your account'
+          upgrade: 'Upgrade'
+          plan1:
+            title: 'Express'
+            description: 'You can see all user contacts by 2 days.'
+            ideal: 'Ideal for do before a travel.'
+          plan2:
+            title: 'Basic'
+            description: 'You can see all user contacts by 7 days.'
+            ideal: 'Ideal for do before a travel.'
+          plan3:
+            title: 'Pro'
+            description: 'You can see all user contacts by 1 month.'
+            ideal: 'Ideal for do before a travel.'
+          plan4:
+            title: 'Premium'
+            description: 'You can see all user contacts by 6 months.'
+            ideal: 'Ideal for do before a travel.'

@@ -1,0 +1,122 @@
+@import "custom_bootstrap/variables.less";
+@import "custom_bootstrap/mixins.less";
+
+#static {
+  #presentation {
+    height: 600px;
+    background-image: image-url('presentation1.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: black;
+    padding-top: 60px;
+    color: white;
+
+    #presentation-text {
+      .text-shadow;
+      margin-top: 150px;
+      text-align: justify;
+
+      h1 {
+        font-size: 30px;
+      }
+    }
+
+    .presentation-buttons {
+      text-align: center;
+      margin-top: 20px;
+      
+      a,button {
+        width: 170px;
+      }
+
+      div {
+        text-align: left
+      }
+    }
+  }
+
+  #why-byswap {
+    height: 400px;
+    text-align: center;
+
+    .arrow {
+      font-size: 80px;
+      margin-top: 40px;
+    }
+  }
+
+  #publish {    
+    background-image: image-url('publish_bg.jpg');
+    text-align: center;
+    padding-bottom: 20px;
+
+    h2#publish-title {
+      width: 600px;
+      background-color: @gray-dark;
+      padding: 15px;
+      color: @gray-light;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -20px;
+    }
+
+    #publish-form {
+      background-color: @gray-light;
+      .radius;
+    }
+  }
+
+  #pricing {
+    text-align: center;
+
+    .pricing {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 10px;      
+      background-color: #eeeeee;
+      border: 1px solid #cccccc;
+      .radius;
+
+      .pricing-title {
+        background-color: @blue;
+        color: white;
+        h2, h3 {
+          position: relative;
+          top: -5px;
+        }
+      }
+
+      .pricing-content {
+        color: @gray-dark;
+
+        .price {
+          font-family: 'Neue Bold';
+          font-size: 35px;
+          color: @blue;
+          margin-top: 25px;
+          margin-bottom: 25px;
+        }
+
+        .description {
+          font-family: 'Neue Medium';
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+
+        .ideal {
+          margin-bottom: 30px;
+          font-size: 15px;
+        }
+      }
+    }
+
+    .pricing-focus {
+      position: relative;
+      top: -2px;
+
+      .pricing-title {
+        background-color: @purple !important;
+      }
+    }
+  }
+}

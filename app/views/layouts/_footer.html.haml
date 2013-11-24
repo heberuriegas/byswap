@@ -1,0 +1,18 @@
+#footer
+  .container
+    .row
+      .col-md-6.align-left
+        = link_to t('views.layouts.footer.home'), root_path
+        |
+        = link_to t('views.layouts.footer.about'), root_path
+        |
+        = link_to t('views.layouts.footer.terms'), root_path
+        |
+        = link_to t('views.layouts.footer.contact'), 'mailto: support@byswap.com'
+        |
+        = link_to t('views.layouts.footer.chat'), root_path
+      .col-md-6.align-right
+        = link_to '#', class: 'footer-ico' do
+          = image_tag 'facebook-icon.jpg', alt: 'Facebook'
+        = link_to '#', class: 'footer-ico' do
+          = image_tag 'twitter-icon.jpg', alt: 'Twitter'

@@ -1,0 +1,114 @@
+@import "custom_bootstrap/variables.less";
+@import "custom_bootstrap/mixins.less";
+
+html, body {
+  
+}
+
+.alert-inside-container {
+  margin-top: 10px;
+  
+  .alert {
+    margin-bottom: 10px !important; 
+  }
+}
+
+.alert-container {
+  width: 100%;
+  position: relative;
+  padding: 0px;
+
+  .alert-inside-container {
+    position: absolute;
+    z-index: 99999;
+    width: 100%;
+    margin-top: 30px;
+
+    .opacity(90);
+
+    .close {
+      position: relative;
+      bottom: 2px;
+      .opacity(90);
+    }
+  }
+}
+
+.layout-chat {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  z-index: 99999;
+}
+
+.navbar-brand {
+  margin: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+
+  img {
+    margin-top: 14px;
+  }
+}
+
+.btn-focus {
+  .btn-pseudo-states(@blue, white);
+}
+
+.btn-light {
+  .btn-pseudo-states(@gray-light, black);
+}
+
+.btn-facebook {
+  .btn-pseudo-states(#3B5998, white)
+}
+
+.nav-button {
+  margin-top: 22px;
+  margin-left: 10px;
+}
+
+#header {
+  border-bottom: 1px solid @green;
+  background: rgba(20,20,20,.8) !important;
+
+  .logout {
+    color: white;
+  }
+}
+
+.container-body {
+
+}
+
+#footer {
+  height: 80px;
+  background-color: @gray-dark;
+  margin-top: 30px;
+  color: @gray-light;
+  padding-top: 30px;
+
+  a {
+    color: @gray-light;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 12px;
+  }
+
+  .footer-ico {
+    position: relative;
+    top: -10px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: @grid-float-breakpoint) {
+  .layout-chat {
+    display: none;
+  }
+}

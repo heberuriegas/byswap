@@ -1,0 +1,82 @@
+.gradient(@color: white) {
+  background: -moz-linear-gradient(90deg, @color, darken(@color, 15%));
+  background: -webkit-linear-gradient(90deg, @color, darken(@color, 15%));
+  background: -o-linear-gradient(90deg, @color, darken(@color, 15%));
+  background: -ms-linear-gradient(90deg, @color, darken(@color, 15%));
+  background: linear-gradient(180deg, @color, darken(@color, 15%));
+}
+
+.opacity(@percentage: 80) {
+  filter:Alpha(opacity=@percentage);
+  opacity: @percentage/100;
+}
+
+.shadow(@large: 5px, @percent: 75%) {
+  -webkit-box-shadow: 0px 0px @large darken(white, @percent);
+  -moz-box-shadow:    0px 0px @large darken(white, @percent);
+  box-shadow:         0px 0px @large darken(white, @percent);
+}
+
+.text-shadow(@distance: 2px, @blur: 2px, @opacity: 1) {
+  text-shadow: @distance @distance 2px rgba(150, 150, 150, @opacity);
+}
+
+.radius(@radius: @border-radius-base){
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+// TODO: Remove that mixin when bootstrap 3 is ready;
+.btn-pseudo-states(@color, @text-color: @text-color, @color-darken: 15%) {
+  background: @color;
+  border-color: @color;
+  .radius;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    background-color: darken(@color, @color-darken);
+    border-color: darken(@color, @color-darken);
+  }
+  &.disabled:hover,
+  &.disabled:focus,
+  &.disabled:active,
+  &.disabled.active,
+  &[disabled]:hover,
+  &[disabled]:focus,
+  &[disabled]:active,
+  &[disabled].active,
+  fieldset[disabled] &:hover,
+  fieldset[disabled] &:focus,
+  fieldset[disabled] &:active,
+  fieldset[disabled] &.active {
+    background-color: @color;
+    border-color: @color;
+  }
+
+  &,
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  &.disabled:hover,
+  &.disabled:focus,
+  &.disabled:active,
+  &.disabled.active,
+  &[disabled]:hover,
+  &[disabled]:focus,
+  &[disabled]:active,
+  &[disabled].active,
+  fieldset[disabled] &:hover,
+  fieldset[disabled] &:focus,
+  fieldset[disabled] &:active,
+  fieldset[disabled] &.active {
+    color: @text-color !important;
+  }
+
+  &:hover {
+    background-color: darken(@color, 5%) !important;
+  }
+}

@@ -1,0 +1,141 @@
+- content_for 'container-fluid' do
+  true
+
+#static
+  #presentation
+    .container
+      .alert-container
+        = bootstrap_flash 
+        .row
+          #presentation-text.col-md-5
+            .row
+              .col-md-12
+                %h1
+                  = t('views.static.home.presentation')
+            .row
+              .col-md-6.presentation-buttons
+                = link_to t('views.static.home.i_need_usd'), '#', class: 'btn btn-success btn-lg'
+              .col-md-6.presentation-buttons
+                .btn-group
+                  = button_tag class: 'btn btn-success btn-lg dropdown-toggle', 'data-toggle' =>'dropdown', type: :button do
+                    = t('views.static.home.i_need_other', currency: 'MXN')
+                    %div.pull-right
+                      %span.caret
+                  %ul.dropdown-menu{ role: :menu }
+                    %li= link_to t('views.static.home.i_need_other', currency: 'MXN'), '#'
+                    %li= link_to t('views.static.home.i_need_other', currency: 'CLP'), '#'
+                    %li= link_to t('views.static.home.i_need_other', currency: 'BR'), '#'
+  #why-byswap
+    .container
+      .row
+        .col-md-12
+          %h2= t('views.static.home.why_byswap')
+          .row
+            .col-md-2.col-md-offset-1
+              %h3= t('views.static.home.find_secure')
+              = image_tag 'find_secure.png', alt: 'Find'
+              %h4= t('views.static.home.find_secure_description')
+            .col-md-2
+              .arrow >
+            .col-md-2
+              %h3= t('views.static.home.negociate')
+              = image_tag 'negociate.png', alt: 'Negociate'
+              %h4= t('views.static.home.negociate_description')
+            .col-md-2
+              .arrow >
+            .col-md-2
+              %h3= t('views.static.home.save_money')
+              = image_tag 'save_money.png', alt: 'Find'
+              %h4= t('views.static.home.save_money_description')
+  #publish
+    .container
+      .row
+        .col-md-12
+          %h2#publish-title= t('views.shared.publish')
+      .row
+        #publish-form.col-md-8.col-md-offset-2
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+          %br
+          Here should be the form
+  #pricing
+    .container
+      .row
+        .col-md-12
+          %h2= t('views.static.home.pricing.title')
+      .row
+        .col-md-3
+          .row
+            .col-md-10.col-md-offset-1.pricing
+              .row.pricing-title
+                .col-md-12
+                  %h3= t('views.static.home.pricing.plan1.title')
+              .row.pricing-content
+                .col-md-12
+                  .price= '$2 USD'
+                  .description= t('views.static.home.pricing.plan1.description')
+                  .ideal= t('views.static.home.pricing.plan1.ideal')
+                  = link_to t('views.static.home.pricing.upgrade'), '#', class: 'btn btn-primary btn-large'
+        .col-md-3
+          .row
+            .col-md-10.col-md-offset-1.pricing
+              .row.pricing-title
+                .col-md-12
+                  %h3= t('views.static.home.pricing.plan2.title')
+              .row.pricing-content
+                .col-md-12
+                  .price= '$5 USD'
+                  .description= t('views.static.home.pricing.plan2.description')
+                  .ideal= t('views.static.home.pricing.plan2.ideal')
+                  = link_to t('views.static.home.pricing.upgrade'), '#', class: 'btn btn-primary btn-large'
+        .col-md-3
+          .row
+            .col-md-10.col-md-offset-1.pricing.pricing-focus
+              .row.pricing-title
+                .col-md-12
+                  %h2.bold= t('views.static.home.pricing.plan3.title')
+              .row.pricing-content
+                .col-md-12
+                  .price= '$15 USD'
+                  .description= t('views.static.home.pricing.plan3.description')
+                  .ideal= t('views.static.home.pricing.plan3.ideal')
+                  = link_to t('views.static.home.pricing.upgrade'), '#', class: 'btn btn-primary btn-large'
+        .col-md-3
+          .row
+            .col-md-10.col-md-offset-1.pricing
+              .row.pricing-title
+                .col-md-12
+                  %h3= t('views.static.home.pricing.plan4.title')
+              .row.pricing-content
+                .col-md-12
+                  .price= '$60 USD'
+                  .description= t('views.static.home.pricing.plan4.description')
+                  .ideal= t('views.static.home.pricing.plan4.ideal')
+                  = link_to t('views.static.home.pricing.upgrade'), '#', class: 'btn btn-primary btn-large'

@@ -1,0 +1,19 @@
+%nav#header.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+  .container
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: root_path}
+        = image_tag 'logo_white_small.png', alt: 'Byswap'
+    .collapse.navbar-collapse.navbar-ex1-collapse.pull-right
+      = link_to t('views.shared.publish'), '#', class: 'btn btn-primary pull-left nav-button'
+      - if user_signed_in?
+        = link_to t('views.layouts.header.logout'), destroy_user_session_path, method: :delete, class: 'btn logout pull-left nav-button'
+      - else
+        = link_to new_user_session_path, class: 'btn btn-facebook pull-left nav-button' do
+          = fa_icon "facebook-square"
+          = t('views.layouts.header.login')

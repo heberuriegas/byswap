@@ -1,0 +1,25 @@
+- @layout_title = 'By Swap' 
+- @layout_description = 'Intercambia dolares directamente con otras personas por la divisa que necesites por el valor real.'
+- @layout_keywords = 'exchange money, exchange currencies, exchange money directly, exchange currencies directly, exchange currencies without fees, currencies without fees, money without fees, money no fee, currency no fee'
+- @layout_image = asset_url('landing/layout.jpg')
+- @layout_url = 'http://Byswap.com'
+
+%title= @layout_title
+
+= csrf_meta_tags
+
+%meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+%meta{name: "description", content: @layout_description, scale: 1.0}
+%meta{name: "keywords", content: @layout_keywords}
+
+%meta{name: "og:title", content: @layout_title}
+%meta{name: "og:description", content: @layout_description}
+%meta{name: "og:image", content: @layout_image}
+%meta{name: "og:url", content: @layout_url}
+%meta{name: "fb:admins", content: "100006646778424"}
+
+%meta{name: "twitter:card", content: "summary"}
+%meta{name: "twitter:url", content: @layout_url}
+%meta{name: "twitter:title", content: @layout_title}
+%meta{name: "twitter:description", content: @layout_description}
+%meta{name: "twitter:image", content: @layout_image}
